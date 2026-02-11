@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using BudgetTracker.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace BudgetTracker;
 
@@ -16,11 +18,25 @@ public static class MauiProgram
 
 		builder.Services.AddMauiBlazorWebView();
 
+		builder.Services.AddDbContext<AppDbContext>();
+
 #if DEBUG
 		builder.Services.AddBlazorWebViewDeveloperTools();
 		builder.Logging.AddDebug();
 #endif
 
-		return builder.Build();
-	}
+		var app = builder.Build();
+
+		using (var scope = app.Services.CreateScope())
+		{
+			var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            var logger = scope.ServiceProvider.GetRequiredService<ILogger<MauiApp>>();
+            logger.LogInformation("DB Path: {Path}", FileSystem.AppDataDirectory);
+
+
+            db.Database.EnsureCreated();
+		}
+
+        return app;
+    }
 }
