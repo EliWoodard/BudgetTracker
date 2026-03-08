@@ -6,7 +6,7 @@
 
         public int Amount { get; set; }
 
-        public string BankName { get; set; }
+        public required string BankName { get; set; }
 
         public int Id { get; set; }
 

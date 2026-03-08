@@ -6,7 +6,7 @@
 
         public int CategoryId { get; set; }
 
-        // Inbound | Outbound
+        // Inbound(1) | Outbound(0)
         public int FlowDirection { get; set; }
 
         public int Id { get; set; }
