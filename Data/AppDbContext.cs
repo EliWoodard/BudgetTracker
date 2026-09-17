@@ -9,10 +9,7 @@ namespace BudgetTracker.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            var dbPath = Path.Combine(
-                FileSystem.AppDataDirectory,
-                "budget.db");
-
+            var dbPath = Path.Combine(FileSystem.AppDataDirectory, "budget.db");
             options.UseSqlite($"Data Source={dbPath}");
         }
     }
