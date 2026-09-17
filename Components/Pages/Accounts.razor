@@ -3,12 +3,12 @@
 
 <h3>Accounts</h3>
 
-<button @onclick="AddAccount">Add Test Account</button>
+<button>Add Test Account</button>
 
 <ul>
     @foreach(var account in accounts)
     {
-        <li>@account.Name - @account.Balance</li>
+        
     }
 </ul>
 
@@ -17,18 +17,6 @@
 
     protected override void OnInitialized()
     {
-        accounts = Db.Accounts.ToList();
-    }
-
-    void AddAccount()
-    {
-        Db.Accounts.Add(new Account
-        {
-            Name = "Checking",
-            Balance = 1000
-        });
-
-        Db.SaveChanges();
-        accounts = Db.Accounts.ToList();
+        
     }
 }
