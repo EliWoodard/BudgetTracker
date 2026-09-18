@@ -5,18 +5,12 @@
 
 <button>Add Test Account</button>
 
-<ul>
-    @foreach(var account in accounts)
-    {
-        
-    }
-</ul>
-
 @code {
     List<Account> accounts = new List<Account>();
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        
+        // Get current existing accounts and if none exist, initialize an empty list
+        accounts = await Db.Accounts.ToListAsync() ?? new List<Account>();
     }
 }
