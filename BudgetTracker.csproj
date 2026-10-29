@@ -71,6 +71,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Source\Components\" />
+      <Folder Include="Source\ViewModels\" />
       <Folder Include="wwwroot\lib\" />
     </ItemGroup>
 
